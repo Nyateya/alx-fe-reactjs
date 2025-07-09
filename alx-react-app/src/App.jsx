@@ -2,11 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import WelcomeMessage from './WelcomeMessage'
-import Header from './Header'
-import MainContent from './MainContent'
-import Footer from './Footer'
-import UserProfile from './UserProfile'
+import WelcomeMessage from './Components/WelcomeMessage'
+import Header from './Components/Header'
+import MainContent from './Components/MainContent'
+import Footer from './Components/Footer'
+import UserProfile from './Components/UserProfile'
 function App() {
   const [count, setCount] = useState(0)
 
