@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRecipeStore } from "../store/RecipeStore";
+import { useRecipeStore } from "../store/useRecipeStore";
 const DeleteRecipeButton = ({ recipeId }) => {
   const deleteRecipe = useRecipeStore((state) => state.deleteRecipe);
   const [isDeleting, setIsDeleting] = useState(false);

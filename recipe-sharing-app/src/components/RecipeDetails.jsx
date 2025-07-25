@@ -1,4 +1,4 @@
-import { useRecipeStore } from "../store/RecipeStore";
+import { useRecipeStore } from "../store/useRecipeStore";
 import React from "react";
 const RecipeDetails = ({ recipeId }) => {
   const recipe = useRecipeStore((state) =>
