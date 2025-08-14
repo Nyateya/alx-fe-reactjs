@@ -54,5 +54,35 @@ function RecipeDetail() {
     </div>
   );
 }
+function AddRecipeForm() {
+  return (
+    <div className="add-recipe-form">
+      <h2>Add a New Recipe</h2>
+      <form>
+        <div>   
+          <label>Title</label>
+          <input type="text" name="title" required />
+        </div>
+        <div>
+          <label>Description</label>
+          <textarea name="description" required></textarea>
+        </div>
+        <div>
+          <label>Image</label>
+          <input type="file" name="image" accept="image/*" />
+        </div>
+        <div>
+          <label>Ingredients</label>
+          <textarea name="ingredients" required></textarea>
+        </div>
+        <div>
+          <label>Instructions</label>
+          <textarea name="instructions" required></textarea>
+        </div>  
+        <button type="submit">Submit Recipe</button>
+      </form>
+    </div>
+  );
+}
 
 export default App
