@@ -2,12 +2,18 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Homepage } from './components/Homepage.jsx'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+      </Routes>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -28,8 +34,25 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
-  )
+    </Router>
+  );
+}
+
+function HomePage() {
+  return (
+    <div className="App">
+      <Homepage />
+    </div>
+  );
+}
+
+function RecipeDetail() {
+  return (
+    <div className="recipe-detail">
+      <h1>Recipe Detail Page</h1>
+      <p>Details about the selected recipe will go here.</p>
+    </div>
+  );
 }
 
 export default App
