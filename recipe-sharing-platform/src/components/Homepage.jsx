@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
+import data from "../data.json";
 
 function Homepage() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    // Fetch recipes from an API or local data source
-    fetch("/api/recipes")
-      .then((response) => response.json())
-      .then((data) => setRecipes(data))
-      .catch((error) => console.error("Error fetching recipes:", error));
+    setRecipes(data);
   }, []);
 
   return (
@@ -31,7 +28,7 @@ function Homepage() {
               {recipe.title}
             </h2>
             <p className="text-gray-600 mt-auto line-clamp-3">
-              {recipe.description}
+              {recipe.summary}
             </p>
           </div>
         ))}
