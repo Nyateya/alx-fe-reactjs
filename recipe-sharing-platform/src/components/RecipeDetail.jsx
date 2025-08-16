@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import data from "../data.json"; // ✅ import local JSON
 
 function RecipeDetail() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    // Fetch recipe details from an API or local data source
-    fetch(`/api/recipes/${id}`)
-      .then((response) => response.json())
-      .then((data) => setRecipe(data))
-      .catch((error) => console.error("Error fetching recipe details:", error));
+    const foundRecipe = data.find((r) => r.id === parseInt(id));
+    setRecipe(foundRecipe);
   }, [id]);
 
   if (!recipe) {
-    return <div>Loading...</div>;
+    return <div>Recipe not found </div>;
   }
 
   return (
@@ -34,9 +32,10 @@ function RecipeDetail() {
           </li>
         ))}
       </ul>
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">Instructions</h2>
-      <p className="text-gray-600">{recipe.instructions}</p>
+      <h2 className="text-xl font-semibold text-gray-800 mb-2">Steps</h2>
+      <p className="text-gray-600">{recipe.steps}</p>
     </div>
   );
 }
+
 export default RecipeDetail;
