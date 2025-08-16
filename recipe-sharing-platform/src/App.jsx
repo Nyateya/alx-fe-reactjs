@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Homepage from "./Components/Homepage.jsx";
-import RecipeDetail from "./Components/RecipeDetail.jsx";
-import AddRecipeForm from "./Components/AddRecipeForm.jsx";
+import Homepage from "./components/Homepage";
+import RecipeDetail from "./components/RecipeDetail";
+import AddRecipeForm from "./components/AddRecipeForm";
+import React from "react";
+
+
 
 function App() {
   return (

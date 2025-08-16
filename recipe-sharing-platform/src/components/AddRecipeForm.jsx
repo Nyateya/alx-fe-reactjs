@@ -30,15 +30,6 @@ function AddRecipeForm() {
     if (!image) newErrors.image = "Image is required";
     return newErrors;
   };
-  // const newRecipe = {
-  //   id: Date.now(),
-  //   title,
-  //   description,
-  //   ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
-  //   instructions,
-  //   image: image ? URL.createObjectURL(image) : null,
-  // };
-
   return (
     <>
       <form
