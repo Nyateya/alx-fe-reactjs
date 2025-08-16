@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import data from "../data.json"; // ✅ import local JSON
+import data from "../data.json"; // local recipes
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -24,6 +24,8 @@ function RecipeDetail() {
         className="w-full h-64 object-cover rounded-md mb-4"
       />
       <p className="text-gray-600 mb-4">{recipe.description}</p>
+
+      {/* Ingredients */}
       <h2 className="text-xl font-semibold text-gray-800 mb-2">Ingredients</h2>
       <ul className="list-disc list-inside mb-4">
         {recipe.ingredients.map((ingredient, index) => (
@@ -32,8 +34,24 @@ function RecipeDetail() {
           </li>
         ))}
       </ul>
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">Steps</h2>
-      <p className="text-gray-600">{recipe.steps}</p>
+
+      {/* Instructions */}
+      {recipe.instructions && (
+        <>
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Instructions
+          </h2>
+          <p className="text-gray-600 mb-4">{recipe.instructions}</p>
+        </>
+      )}
+
+      {/* Steps */}
+      {recipe.steps && (
+        <>
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">Steps</h2>
+          <p className="text-gray-600">{recipe.steps}</p>
+        </>
+      )}
     </div>
   );
 }
