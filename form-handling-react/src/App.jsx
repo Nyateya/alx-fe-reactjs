@@ -1,16 +1,17 @@
 
 import './App.css'
-import Registration from './components/RegistrationForm.jsx'
+import React from 'react'
+import FormikForm from './components/formikForm'
 
 function App() {
   return (
     <div className="App">
-      <h1>Registration Form</h1>
-      <Registration />
-    </div>
+    
+      <h2>Registration Form</h2>
+      <RegistrationForm />
+      <h2>Formik Form</h2>
+      <FormikForm />
+    </div> 
   )
-
 }
- 
-
 export default App
