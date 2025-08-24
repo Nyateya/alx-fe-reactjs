@@ -11,8 +11,10 @@ function PostsComponent() {
     "posts",
     fetchPosts,
     {
-      staleTime: 1000 * 60, // 1 min
-      cacheTime: 1000 * 60 * 5, // 5 min
+      staleTime: 1000 * 60, // keep data fresh for 1 min
+      cacheTime: 1000 * 60 * 5, // keep cache for 5 mins
+      refetchOnWindowFocus: false, // 👈 prevents auto-refetch on tab focus
+      keepPreviousData: true, // 👈 keep old data while fetching new
     }
   );
 
