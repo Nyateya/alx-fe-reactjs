@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 
 const fetchPosts = async () => {
-  const res = await fetch("https://api.example.com/data");
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   return res.json();
 };
 
@@ -11,8 +11,8 @@ function PostsComponent() {
     "posts",
     fetchPosts,
     {
-      staleTime: 1000 * 60,
-      cacheTime: 1000 * 60 * 5,
+      staleTime: 1000 * 60, // 1 min
+      cacheTime: 1000 * 60 * 5, // 5 min
     }
   );
 
