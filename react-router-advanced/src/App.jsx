@@ -7,7 +7,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import Profile from "./components/Profile";
-import BlogPost from "./components/BlogPost"; // ✅ new import
+import BlogPost from "./components/BlogPost";
+import ProtectedRoute from "./components/ProtectedRoute"; // ✅ import
 
 function Login() {
   const handleLogin = () => {
@@ -56,20 +57,27 @@ function App() {
             <Link to="/login"> Login</Link>
           </li>
           <li>
-            <Link to="/logout">Logout</Link>
+            <Link to="/logout"> Logout</Link>
           </li>
           <li>
-            <Link to="/blog/1"> Blog Post 1</Link> {/* ✅ test link */}
+            <Link to="/blog/1"> Blog Post 1</Link>
           </li>
         </ul>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile/*" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile /> {/* ✅ protected */}
+            </ProtectedRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/blog/:id" element={<BlogPost />} /> {/* ✅ new route */}
+        <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
