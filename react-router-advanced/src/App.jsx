@@ -1,18 +1,18 @@
 import React from "react";
 import {
   BrowserRouter as Router,
+  Routes,
   Route,
-  Switch,
   Link,
-  Redirect,
+  Navigate,
 } from "react-router-dom";
 import Profile from "./components/Profile";
-
+import BlogPost from "./components/BlogPost"; // ✅ new import
 
 function Login() {
   const handleLogin = () => {
-    localStorage.setItem("authToken", "sample_token"); 
-    window.location.href = "/profile"; 
+    localStorage.setItem("authToken", "sample_token");
+    window.location.href = "/profile";
   };
 
   return (
@@ -26,7 +26,7 @@ function Login() {
 function Logout() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
-    window.location.href = "/"; 
+    window.location.href = "/";
   };
 
   return (
@@ -58,16 +58,20 @@ function App() {
           <li>
             <Link to="/logout">Logout</Link>
           </li>
+          <li>
+            <Link to="/blog/1"> Blog Post 1</Link> {/* ✅ test link */}
+          </li>
         </ul>
       </nav>
 
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/login" component={Login} />
-        <Route path="/logout" component={Logout} />
-        <Redirect to="/" />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile/*" element={<Profile />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/blog/:id" element={<BlogPost />} /> {/* ✅ new route */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </Router>
   );
 }
